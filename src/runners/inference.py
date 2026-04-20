@@ -63,7 +63,7 @@ def inference_video(
     # Get all frames
     imgs_paths = sorted(Path(frame_dir).glob("*.png"))
 
-    cap = cv2.VideoCapture(input_video_path)
+    cap = cv2.VideoCapture(str(input_video_path))
 
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))

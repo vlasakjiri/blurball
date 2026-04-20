@@ -33,13 +33,20 @@ All trained model weights for BlurBall, WASB, TrackNetv2, ResTrackNetv2, BallSeg
 
 ## Installation
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 Set the root of the repository correctly in src/config/global:
-```
+```bash
 WASB_ROOT=<path to root of repo>
+```
+
+Set hydra environment variable:
+```bash
+export HYDRA_FULL_ERROR=1
+```
+```
 ```
 
 ## Evaluation
@@ -98,9 +105,9 @@ To fine-tune on your own dataset:
 If you use this work, please cite:
 
 ```bibtex
-@article{gossard2025blurball,
+@article{gossard2026blurball,
   title   = {BlurBall: Joint Ball and Motion Blur Estimation for Table Tennis Ball Tracking},
   author  = {Thomas Gossard and Filip Radovic and Andreas Ziegler and Andreas Zell},
-  journal = {arXiv preprint arXiv:2509.18387},
-  year    = {2025}
+  journal = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+  year    = {2026}
 }
