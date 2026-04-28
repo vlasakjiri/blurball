@@ -9,6 +9,42 @@ import matplotlib.pyplot as plt
 from utils import Center
 
 
+def draw_trail(
+    img,
+    points,
+    head_color=(255, 220, 80),
+    tail_color=(255, 80, 20),
+    max_thickness=5,
+):
+    if len(points) < 2:
+        return img
+
+    overlay = img.copy()
+    num_segments = len(points) - 1
+    for idx in range(num_segments):
+        start = points[idx]
+        end = points[idx + 1]
+        if start is None or end is None:
+            continue
+
+        progress = (idx + 1) / max(num_segments, 1)
+        color = tuple(
+            int(tail_color[channel] * (1.0 - progress) + head_color[channel] * progress)
+            for channel in range(3)
+        )
+        thickness = max(1, int(max_thickness * progress))
+
+        cv2.line(overlay, start, end, color, thickness + 4, cv2.LINE_AA)
+        cv2.line(img, start, end, color, thickness, cv2.LINE_AA)
+
+    img = cv2.addWeighted(overlay, 0.18, img, 0.82, 0)
+    head = points[-1]
+    if head is not None:
+        cv2.circle(img, head, max(4, max_thickness + 2), head_color, 2, cv2.LINE_AA)
+
+    return img
+
+
 def draw_frame(
     img_or_path,
     center: Center,

@@ -167,3 +167,5 @@ datasets/*
 outputs
 wandb/
 weights/
+models/
+nextcloud_models_page.html

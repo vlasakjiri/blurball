@@ -4,6 +4,9 @@ gpus: [0]
 vis_result: True
 vis_hm: True
 vis_traj: False
+in_memory: False
 model_path: 
+gap_fill_max_gap: 3
+gap_fill_max_step_distance: 140.0
 eval:
   score_threshold: 0.5
